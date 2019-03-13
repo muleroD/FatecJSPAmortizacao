@@ -12,7 +12,9 @@
         <title>Home</title>
     </head>
     <body>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
         <h1>Home</h1>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
 
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>

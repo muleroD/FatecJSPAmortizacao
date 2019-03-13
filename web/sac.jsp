@@ -12,7 +12,9 @@
         <title>Amortização Constante</title>
     </head>
     <body>
-        <h1>SAC</h1>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
+        <h1>Sistema de Amortização Constante</h1>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
 
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>

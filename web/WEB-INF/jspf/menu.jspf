@@ -1,4 +1,9 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
-
+<hr/>
+<a href="home.jsp">Home</a> ||
+<a href="sac.jsp">Amortização Constante</a> ||
+<a href="saa.jsp">Amortização Americana</a> ||
+<a href="price.jsp">Tabela Price</a> ||
+<hr/>
