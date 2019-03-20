@@ -1,9 +1,3 @@
-<%-- 
-    Document   : SAConstante
-    Created on : 13/03/2019, 16:10:42
-    Author     : Mulero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

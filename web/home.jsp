@@ -1,9 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : 13/03/2019, 15:58:35
-    Author     : Mulero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

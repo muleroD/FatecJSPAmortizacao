@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package model;
 
 import java.text.DecimalFormat;
 
@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
  *
  * @author alexander
  */
-public class Amortizacao {
+public class Calculos {
     double pmt = 0;
     public Double CalcPrestPrice(double vr, double np, double jr){
         double d1 = Math.pow((1+(jr/100)),np);

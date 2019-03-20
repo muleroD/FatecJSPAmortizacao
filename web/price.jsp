@@ -1,9 +1,3 @@
-<%-- 
-    Document   : price
-    Created on : 13/03/2019, 16:11:56
-    Author     : Mulero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
