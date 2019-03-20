@@ -1,7 +1,7 @@
 <%-- 
     Document   : SAA
     Created on : 13/03/2019, 16:11:12
-    Author     : Mulero
+    Author     : Alexander
 --%>
 <%@page import="java.text.DecimalFormat" %>
 <%@page import="Classes.Amortizacao" %>
