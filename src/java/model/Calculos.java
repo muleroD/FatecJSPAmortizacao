@@ -34,18 +34,18 @@ public class Calculos {
         String table
                 = "<table class='table table-bordered container-fluid' style='width: 800px;'>"
                 + " <tr>"
-                + "     <th>Nº</th>"
-                + "     <th>Prestação</th>"
+                + "     <th>Mesesº</th>"
+                + "     <th>Saldo Devedor (R$)</th>"
+                + "     <th>Amortização (R$)</th>"
                 + "     <th>Juros</th>"
-                + "     <th>Amortização</th>"
-                + "     <th>Saldo Devedor</th>"
+                + "     <th>Prestação</th>"
                 + " </tr>"
                 + " <tr>"
                 + "     <td>" + 0 + "</td>"
-                + "     <td>" + df.format(0) + "</td>"
-                + "     <td>" + df.format(jurosInicial) + "</td>"
-                + "     <td>" + df.format(amortizacao) + "</td>"
                 + "     <td>" + df.format(saldo) + "</td>"
+                + "     <td>" + df.format(amortizacao) + "</td>"
+                + "     <td>" + df.format(jurosInicial) + "</td>"
+                + "     <td>" + df.format(0) + "</td>"
                 + " </tr>";
 
         if (option == "const") {
