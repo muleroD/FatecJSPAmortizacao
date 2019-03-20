@@ -65,11 +65,11 @@
         %>
         <div class="container-fluid format_tabela">
             <%      DecimalFormat dv = new DecimalFormat("#,##0.00");
-                out.print("Valor da Prestação R$ " + dv.format(amortizacao.CalcPrestAmeric(valor, juros)));
+                out.print("Valor da Prestação R$ " + dv.format(amortizacao.Americana(valor, juros)));
             %>
         </div>
         <%
-                    out.print(amortizacao.createTable(valor, prestacao, juros, amortizacao.CalcPrestAmeric(valor, juros), "americ"));
+                    out.print(amortizacao.createTable(valor, prestacao, juros, amortizacao.Americana(valor, juros), "americ"));
                 }
 
             } catch (Exception ex) {

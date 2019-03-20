@@ -1,98 +1,97 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.text.DecimalFormat;
 
-/**
- *
- * @author alexander
- */
 public class Calculos {
+
     double pmt = 0;
-    public Double CalcPrestPrice(double vr, double np, double jr){
-        double d1 = Math.pow((1+(jr/100)),np);
-        
-        pmt = vr / ((d1-1) / (d1*(jr/100)) );
-        
-        return pmt;
+
+    public Double Price(double valor, double prestacao, double juros) {
+        double d1 = Math.pow((1 + (juros / 100)), prestacao);
+        return valor / ((d1 - 1) / (d1 * (juros / 100)));
     }
-    public Double CalcPrestAmeric(double vr, double jr){
-        pmt = vr * (jr/100);
-        
-        return pmt;
+
+    public Double Americana(double valor, double juros) {
+        return valor * (juros / 100);
     }
-    public Double CalcPrestConst(double vr, double np){
-        pmt = vr / np;
-        
-        return pmt;
+
+    public Double Constante(double valor, double prestacao) {
+        return valor / prestacao;
     }
-    public String createTable(double vr, double np, double jr, double pmt, String a){
+
+    public String createTable(double valor, double prestacao, double juros, double pmt, String option) {
         DecimalFormat df = new DecimalFormat("#,##0.00");
-        double juros = 0;
+
+        double jurosInicial = 0;
         double amortizacao = 0;
-        double saldo = vr;
-        
+        double saldo = valor;
+
         //somatorias
         double jurosSoma = 0;
         double amortizacaoSoma = 0;
         double prestacaoSoma = 0;
-        
-        String table = "<table class='table table-bordered container-fluid' style='width: 800px;'><tr>"
-                + "<th>Nº</th>"
-                + "<th>Prestação</th>"
-                + "<th>Juros</th>"
-                + "<th>Amortização</th>"
-                + "<th>Saldo Devedor</th>"
-                + "<tr>"
-                + "<tr>"
-                + "<td>"+0+"</td>"
-                + "<td>"+df.format(0)+"</td>"
-                + "<td>"+df.format(juros)+"</td>"
-                + "<td>"+df.format(amortizacao)+"</td>"
-                + "<td>"+df.format(saldo)+"</td>"
-                + "</tr>";
-        if (a=="const")
+
+        String table
+                = "<table class='table table-bordered container-fluid' style='width: 800px;'>"
+                + " <tr>"
+                + "     <th>Nº</th>"
+                + "     <th>Prestação</th>"
+                + "     <th>Juros</th>"
+                + "     <th>Amortização</th>"
+                + "     <th>Saldo Devedor</th>"
+                + " </tr>"
+                + " <tr>"
+                + "     <td>" + 0 + "</td>"
+                + "     <td>" + df.format(0) + "</td>"
+                + "     <td>" + df.format(jurosInicial) + "</td>"
+                + "     <td>" + df.format(amortizacao) + "</td>"
+                + "     <td>" + df.format(saldo) + "</td>"
+                + " </tr>";
+
+        if (option == "const") {
             amortizacao = pmt;
-        for(int j = 1; j <= np; j++)
-        {
-            if (a=="americ" && j==np)
+        }
+        for (int j = 1; j <= prestacao; j++) {
+            if (option == "americ" && j == prestacao) {
                 pmt = saldo + pmt;
-            
-            juros = (saldo*(jr/100));
-            
-            if (a=="const")
-                pmt = amortizacao+juros;
-            
+            }
+
+            jurosInicial = (saldo * (juros / 100));
+
+            if (option == "const") {
+                pmt = amortizacao + jurosInicial;
+            }
+
             prestacaoSoma = prestacaoSoma + pmt;
-            jurosSoma = jurosSoma + juros;
-            if (a=="americ" && j==np)
-                amortizacao=saldo;
-            else if (a=="price")
-                amortizacao = pmt - juros;
+            jurosSoma = jurosSoma + jurosInicial;
+            if (option == "americ" && j == prestacao) {
+                amortizacao = saldo;
+            } else if (option == "price") {
+                amortizacao = pmt - jurosInicial;
+            }
             amortizacaoSoma = amortizacaoSoma + amortizacao;
             saldo = saldo - amortizacao;
-            
-            if (saldo<0)
-                saldo=0;
-            table = table + "<tr>"
-                    + "<td>"+j+"</td>"
-                    + "<td>"+df.format(pmt)+"</td>"
-                    + "<td>"+df.format(juros)+"</td>"
-                    + "<td>"+df.format(amortizacao)+"</td>"
-                    + "<td>"+df.format(saldo)+"</td>"
+
+            if (saldo < 0) {
+                saldo = 0;
+            }
+
+            table = table
+                    + "<tr>"
+                    + "<td>" + j + "</td>"
+                    + "<td>" + df.format(pmt) + "</td>"
+                    + "<td>" + df.format(jurosInicial) + "</td>"
+                    + "<td>" + df.format(amortizacao) + "</td>"
+                    + "<td>" + df.format(saldo) + "</td>"
                     + "</tr>";
         }
-        table = table +"<tr>"
-                    + "<td>TOTAL</td>"
-                    + "<td>"+df.format(prestacaoSoma)+"</td>"
-                    + "<td>"+df.format(jurosSoma)+"</td>"
-                    + "<td>"+df.format(amortizacaoSoma)+"</td>"
-                    + "<td>"+df.format(saldo)+"</td>"
-                    + "</tr>" +"</table>";
+        table = table + "<tr>"
+                + "<td>TOTAL</td>"
+                + "<td>" + df.format(prestacaoSoma) + "</td>"
+                + "<td>" + df.format(jurosSoma) + "</td>"
+                + "<td>" + df.format(amortizacaoSoma) + "</td>"
+                + "<td>" + df.format(saldo) + "</td>"
+                + "</tr>" + "</table>";
         return table;
     }
 }
